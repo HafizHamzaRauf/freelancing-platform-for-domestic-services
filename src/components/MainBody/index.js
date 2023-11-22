@@ -14,7 +14,7 @@ const MainBodyStyles = {
   MainBodyBox: {
     color: "black",
     display: "flex",
-    m: { xs: "4rem 2rem", md: "6rem 4rem" },
+    m: { xs: "2.5rem 1rem", md: "6rem 4rem" },
     gap: "8rem",
   },
   HeroSectionDescription: {
