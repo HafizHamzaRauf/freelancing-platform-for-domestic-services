@@ -14,7 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { AppName, navItems, drawerWidth } from "../../Utils/constants";
-import IconImage from "../../Assets/icon1.png";
+import IconImage from "../../Assets/icon2.jpg";
 import { Avatar } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AppIcon from "../UtilComponents/AppIcon";

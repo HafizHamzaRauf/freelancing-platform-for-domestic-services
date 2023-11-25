@@ -7,6 +7,7 @@ import Error from "../pages/Error";
 import NavbarLayout from "../Layout/NavbarLayout";
 import SigninPage from "../pages/Signin";
 import SignupPage from "../pages/Signup";
+import ForgetPassword from "../pages/ForgetPassword";
 const AppRouter = () => {
   return (
     <Router>
@@ -32,6 +33,14 @@ const AppRouter = () => {
           element={
             <NavbarLayout>
               <SignupPage />
+            </NavbarLayout>
+          }
+        />
+        <Route
+          path="/forgetpassword"
+          element={
+            <NavbarLayout>
+              <ForgetPassword />
             </NavbarLayout>
           }
         />

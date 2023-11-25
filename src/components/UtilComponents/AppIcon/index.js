@@ -1,6 +1,6 @@
 import { Avatar, Box, Typography } from "@mui/material";
 import React from "react";
-import IconImage from "../../../Assets/icon1.png";
+import IconImage from "../../../Assets/icon2.jpg";
 import { AppName } from "../../../Utils/constants";
 const AppIcon = () => {
   return (
@@ -9,7 +9,7 @@ const AppIcon = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        mt: "2rem",
+        mt: "1.5rem",
       }}
     >
       <Avatar

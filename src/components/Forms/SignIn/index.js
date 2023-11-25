@@ -21,7 +21,7 @@ const SigninStyles = {
     borderRadius: "10px",
     borderTop: `6px solid ${theme.palette.primary.main}`,
     boxShadow: "0 4px 8px rgba(0,0,0,.1)",
-    gap: "2rem",
+    gap: "1.2rem",
   },
   SigninButton: {
     backgroundColor: theme.palette.secondary.main,
@@ -33,9 +33,13 @@ const SigninStyles = {
 };
 
 const Signin = () => {
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    console.log("inside the sign in form ");
+  };
   return (
     <Box sx={SigninStyles.CenterBox}>
-      <form style={SigninStyles.SiginBox}>
+      <form style={SigninStyles.SiginBox} onSubmit={onFormSubmit}>
         <AppIcon></AppIcon>
         <Typography variant="h5" component={"h5"} sx={{ fontWeight: "bold" }}>
           Sign In
@@ -47,9 +51,14 @@ const Signin = () => {
           type="password"
           autoComplete="current-password"
         />
-        <Button sx={SigninStyles.SigninButton}>Submit</Button>
+
+        <Link to={"/forgetpassword"}> Forget Password </Link>
+
+        <Button sx={SigninStyles.SigninButton} type="submit">
+          Submit
+        </Button>
         <Typography variant="p">
-          Not a Member? <Link to={"/signup"}>Register</Link>{" "}
+          Not a Member? <Link to={"/signup"}>Register</Link>
         </Typography>
       </form>
     </Box>
