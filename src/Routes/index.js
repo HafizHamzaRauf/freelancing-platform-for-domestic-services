@@ -9,48 +9,28 @@ import SigninPage from "../pages/Signin";
 import SignupPage from "../pages/Signup";
 import ForgetPassword from "../pages/ForgetPassword";
 import Dashboard from "../pages/Dashboard";
+import PostProject from "../pages/PostProject";
+import Signup from "../components/Forms/SignUp";
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
         {/* *****************************     HOME PAGE ROUTES      ***************************** */}
 
-        <Route
-          path="/"
-          element={
-            <NavbarLayout>
-              <Home />
-            </NavbarLayout>
-          }
-        />
-        <Route
-          path="/signin"
-          element={
-            <NavbarLayout>
-              <SigninPage />
-            </NavbarLayout>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <NavbarLayout>
-              <SignupPage />
-            </NavbarLayout>
-          }
-        />
-        <Route
-          path="/forgetpassword"
-          element={
-            <NavbarLayout>
-              <ForgetPassword />
-            </NavbarLayout>
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SigninPage />} />
+        <Route path="/signup" element={<SignupPage></SignupPage>} />
+        <Route path="/forgetpassword" element={<ForgetPassword />} />
 
         {/* *****************************     DASHBOARD PAGE ROUTES      ***************************** */}
 
         <Route path="/dashboard" element={<Dashboard></Dashboard>} />
+
+        {/* *****************************     CLIENT  ROUTES      ***************************** */}
+
+        <Route path="/postproject" element={<PostProject></PostProject>} />
+
+        {/* *****************************     ERROR  ROUTES      ***************************** */}
 
         <Route
           path="*"

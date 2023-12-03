@@ -40,7 +40,7 @@ const DashboardMain = () => {
         ></DashboardCard>
 
         <DashboardCard
-          Title={"Projects Completed"}
+          Title={"Total Projects "}
           Value={freelancerData?.completedProjects}
         ></DashboardCard>
       </Grid>

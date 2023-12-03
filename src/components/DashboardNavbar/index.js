@@ -16,6 +16,50 @@ import AppIcon from "../UtilComponents/AppIcon";
 import { AppName, pages, settings } from "../../Utils/constants";
 import { Link, useNavigate } from "react-router-dom";
 
+/**************************         DASHBOARD STYLES        ******************/
+const dashboardStyles = {
+  appIconCustomStyles: { display: { xs: "none", sm: "flex" } },
+
+  menuMobileBox: { flexGrow: 1, display: { xs: "flex", sm: "none" } },
+  mobileMenu: {
+    display: { xs: "block", sm: "none" },
+  },
+
+  mobileMenuItem: {
+    color: "black",
+    textDecoration: "none",
+    display: "block",
+  },
+  appNameOnMobile: {
+    display: { xs: "flex", sm: "none" },
+    flexGrow: 1,
+
+    marginRight: "2rem",
+  },
+  desktopDashboardLinks: {
+    p: 1,
+    ml: 2,
+    flexGrow: 1,
+    gap: 3,
+    display: { xs: "none", sm: "flex" },
+  },
+  desktopDashboardLinkItems: {
+    my: 1,
+    ml: 1,
+    color: "white",
+    display: "block",
+    textDecoration: "none",
+  },
+
+  profileLinks: {
+    my: 1,
+    ml: 1,
+    color: "black",
+    display: "block",
+    textDecoration: "none",
+  },
+};
+
 function DashboardNavbar() {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -42,10 +86,10 @@ function DashboardNavbar() {
         <Toolbar disableGutters sx={{ p: 1 }}>
           <AppIcon
             noMarginTop={true}
-            customStyles={{ display: { xs: "none", sm: "flex" } }}
+            customStyles={dashboardStyles.appIconCustomStyles}
           ></AppIcon>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}>
+          <Box sx={dashboardStyles.menuMobileBox}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -70,20 +114,14 @@ function DashboardNavbar() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", sm: "none" },
-              }}
+              sx={dashboardStyles.mobileMenu}
             >
               {pages.map((page, index) => {
                 return (
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Link
                       to={`/${page?.name?.replace(/\s+/g, "").toLowerCase()}`}
-                      style={{
-                        color: "black",
-                        textDecoration: "none",
-                        display: "block",
-                      }}
+                      style={dashboardStyles.mobileMenuItem}
                     >
                       {page.name}
                     </Link>
@@ -93,38 +131,16 @@ function DashboardNavbar() {
             </Menu>
           </Box>
 
-          <Typography
-            variant="h6"
-            sx={{
-              display: { xs: "flex", sm: "none" },
-              flexGrow: 1,
-
-              marginRight: "2rem",
-            }}
-          >
+          <Typography variant="h6" sx={dashboardStyles.appNameOnMobile}>
             {AppName}
           </Typography>
 
-          <Box
-            sx={{
-              p: 1,
-              ml: 2,
-              flexGrow: 1,
-              gap: 3,
-              display: { xs: "none", sm: "flex" },
-            }}
-          >
+          <Box sx={dashboardStyles.desktopDashboardLinks}>
             {pages.map((page) => (
               <Link
                 onClick={handleCloseNavMenu}
                 to={`/${page?.name?.replace(/\s+/g, "").toLowerCase()}`}
-                style={{
-                  my: 1,
-                  ml: 1,
-                  color: "white",
-                  display: "block",
-                  textDecoration: "none",
-                }}
+                style={dashboardStyles.desktopDashboardLinkItems}
               >
                 {page.name}
               </Link>
@@ -162,13 +178,7 @@ function DashboardNavbar() {
                       to={`/${setting?.name
                         ?.replace(/\s+/g, "")
                         .toLowerCase()}`}
-                      style={{
-                        my: 1,
-                        ml: 1,
-                        color: "black",
-                        display: "block",
-                        textDecoration: "none",
-                      }}
+                      style={dashboardStyles.profileLinks}
                       textAlign="center"
                     >
                       {setting.name}
