@@ -3,6 +3,8 @@ import React from "react";
 import {
   heroSectionDescription,
   heroSectionHeading,
+  heroSectionHeading1,
+  heroSectionHeading2,
 } from "../../Utils/constants";
 import HeroImage from "../../Assets/heroimage.png";
 import theme from "../../Utils/theme";
@@ -24,6 +26,7 @@ const MainBodyStyles = {
     p: "2rem",
   },
   HeroSectionheading: {
+    display: "inline-block",
     color: "black",
     fontWeight: "bold",
     fontSize: { xs: "2rem", md: "3rem", xl: "4rem" },
@@ -47,13 +50,33 @@ const MainBody = () => {
   return (
     <Box sx={MainBodyStyles.MainBodyBox}>
       <Box sx={MainBodyStyles.HeroSectionDescription}>
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={MainBodyStyles.HeroSectionheading}
-        >
-          {heroSectionHeading}
-        </Typography>
+        <Box>
+          <Typography
+            variant="h2"
+            component="h2"
+            sx={MainBodyStyles.HeroSectionheading}
+          >
+            {heroSectionHeading1}
+          </Typography>
+          <Typography
+            variant="h2"
+            component="h2"
+            sx={{
+              ...MainBodyStyles.HeroSectionheading,
+              color: theme.palette.secondary.main,
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            {" Local Talent ,"}
+          </Typography>
+          <Typography
+            variant="h2"
+            component="h2"
+            sx={MainBodyStyles.HeroSectionheading}
+          >
+            {heroSectionHeading2}
+          </Typography>
+        </Box>
         <Typography variant="h6" component="h6" sx={{}}>
           {heroSectionDescription}
         </Typography>

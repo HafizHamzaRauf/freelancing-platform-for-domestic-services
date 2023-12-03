@@ -1,7 +1,7 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React from "react";
 import AppIcon from "../../UtilComponents/AppIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import theme from "../../../Utils/theme";
 
 const SigninStyles = {
@@ -33,8 +33,11 @@ const SigninStyles = {
 };
 
 const Signin = () => {
+  const navigate = useNavigate();
+
   const onFormSubmit = (e) => {
     e.preventDefault();
+    navigate("/dashboard");
     console.log("inside the sign in form ");
   };
   return (

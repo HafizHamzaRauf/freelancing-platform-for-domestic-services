@@ -2,14 +2,15 @@ import { Avatar, Box, Typography } from "@mui/material";
 import React from "react";
 import IconImage from "../../../Assets/icon2.jpg";
 import { AppName } from "../../../Utils/constants";
-const AppIcon = () => {
+const AppIcon = ({ noMarginTop, customStyles }) => {
   return (
     <Box
       sx={{
         display: "flex",
+        ...customStyles,
         alignItems: "center",
         justifyContent: "center",
-        mt: "1.5rem",
+        mt: noMarginTop ? "0" : "1.5rem",
       }}
     >
       <Avatar

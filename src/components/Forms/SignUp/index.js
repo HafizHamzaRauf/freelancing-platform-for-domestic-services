@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import AppIcon from "../../UtilComponents/AppIcon";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import theme from "../../../Utils/theme";
 
 const SignupStyles = {
@@ -50,9 +50,15 @@ const SignupStyles = {
 };
 
 const Signup = () => {
+  const navigate = useNavigate();
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    navigate("/dashboard");
+    console.log("inside the sign in form ");
+  };
   return (
     <Box sx={SignupStyles.CenterBox}>
-      <form style={SignupStyles.SiginBox}>
+      <form style={SignupStyles.SiginBox} onSubmit={onFormSubmit}>
         <AppIcon></AppIcon>
         <Typography variant="h5" component={"h5"} sx={{ fontWeight: "bold" }}>
           Sign Up
@@ -105,7 +111,9 @@ const Signup = () => {
             label="Register As Freelancer"
           />
         </FormGroup>
-        <Button sx={SignupStyles.SignupButton}>Submit</Button>
+        <Button type="submit" sx={SignupStyles.SignupButton}>
+          Submit
+        </Button>
         <Typography variant="p">
           Already a Member? <Link to={"/signin"}>Signin</Link>
         </Typography>

@@ -8,10 +8,13 @@ import NavbarLayout from "../Layout/NavbarLayout";
 import SigninPage from "../pages/Signin";
 import SignupPage from "../pages/Signup";
 import ForgetPassword from "../pages/ForgetPassword";
+import Dashboard from "../pages/Dashboard";
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
+        {/* *****************************     HOME PAGE ROUTES      ***************************** */}
+
         <Route
           path="/"
           element={
@@ -44,6 +47,10 @@ const AppRouter = () => {
             </NavbarLayout>
           }
         />
+
+        {/* *****************************     DASHBOARD PAGE ROUTES      ***************************** */}
+
+        <Route path="/dashboard" element={<Dashboard></Dashboard>} />
 
         <Route
           path="*"
