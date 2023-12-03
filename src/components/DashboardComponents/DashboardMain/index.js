@@ -16,7 +16,7 @@ const DashboardMain = () => {
   };
 
   return (
-    <Box sx={{ p: "3rem 4rem" }}>
+    <Box sx={{ p: { xs: "3rem 2rem", md: "3rem 4rem" } }}>
       <Typography sx={{ textAlign: "center" }} variant="h3">
         {dashboardMainHeading}
       </Typography>
