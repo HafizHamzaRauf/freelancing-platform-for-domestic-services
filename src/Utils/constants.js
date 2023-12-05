@@ -31,3 +31,12 @@ export const settings = [
 export const dashboardMainHeading = "Welcome, [User]";
 export const dashboardDescription =
   "Welcome to your tailored dashboard! just starting? , find everything you need—from your current balance and ongoing projects to past achievements—right here.";
+
+/***********************       Manaage Projects CONTENT        *************/
+
+export const buttonFilters = [
+  { value: "all", label: "All" },
+  { value: "completed", label: "Completed" },
+  { value: "active", label: "Active" },
+  { value: "cancelled", label: "Cancelled" },
+];

@@ -11,6 +11,7 @@ import ForgetPassword from "../pages/ForgetPassword";
 import Dashboard from "../pages/Dashboard";
 import PostProject from "../pages/PostProject";
 import Signup from "../components/Forms/SignUp";
+import ManageProjects from "../pages/ManageProjects";
 const AppRouter = () => {
   return (
     <Router>
@@ -29,6 +30,10 @@ const AppRouter = () => {
         {/* *****************************     CLIENT  ROUTES      ***************************** */}
 
         <Route path="/postproject" element={<PostProject></PostProject>} />
+        <Route
+          path="/manageprojects"
+          element={<ManageProjects></ManageProjects>}
+        />
 
         {/* *****************************     ERROR  ROUTES      ***************************** */}
 
