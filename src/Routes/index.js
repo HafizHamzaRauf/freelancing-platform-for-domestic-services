@@ -12,6 +12,7 @@ import Dashboard from "../pages/Dashboard";
 import PostProject from "../pages/PostProject";
 import Signup from "../components/Forms/SignUp";
 import ManageProjects from "../pages/ManageProjects";
+import ProjectDetails from "../pages/ProjectDetails";
 const AppRouter = () => {
   return (
     <Router>
@@ -35,6 +36,10 @@ const AppRouter = () => {
           element={<ManageProjects></ManageProjects>}
         />
 
+        <Route
+          path="/projects/:projectId"
+          element={<ProjectDetails></ProjectDetails>}
+        />
         {/* *****************************     ERROR  ROUTES      ***************************** */}
 
         <Route

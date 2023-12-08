@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 
-const MobileProjectCard = ({ key, Title, Description }) => {
+const MobileProjectCard = ({ projectId, Title, Description }) => {
   // Truncate the title to 12 characters
   const truncatedTitle = Title.length > 12 ? `${Title.slice(0, 12)}...` : Title;
 
@@ -18,7 +18,7 @@ const MobileProjectCard = ({ key, Title, Description }) => {
         borderRadius: "5px",
         justifyContent: "space-between",
       }}
-      key={key}
+      key={projectId}
     >
       <Box>
         <Typography variant="h6">{truncatedTitle}</Typography>

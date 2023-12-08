@@ -1,20 +1,28 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
+const getStatusColor = (status) => {
+  switch (status) {
+    case "Completed":
+      return "green";
+    case "Active":
+      return "blue";
+    case "Cancelled":
+      return "red";
+    default:
+      return "gray";
+  }
+};
 
-const ProjectCard = ({ key, Title, Description, freelancer, status, date }) => {
-  const getStatusColor = () => {
-    switch (status) {
-      case "Completed":
-        return "green";
-      case "Active":
-        return "blue";
-      case "Cancelled":
-        return "red";
-      default:
-        return "gray";
-    }
-  };
-
+const ProjectCard = ({
+  projectId,
+  Title,
+  Description,
+  freelancer,
+  status,
+  date,
+}) => {
+  const navigate = useNavigate();
   // Truncate the title to 16 characters
   const truncatedTitle = Title.length > 16 ? `${Title.slice(0, 16)}...` : Title;
 
@@ -26,9 +34,19 @@ const ProjectCard = ({ key, Title, Description, freelancer, status, date }) => {
   const truncatedFreelancer =
     freelancer.length > 10 ? `${freelancer.slice(0, 10)}...` : freelancer;
 
+  const projectClickHandler = () => {
+    navigate("/projects/" + projectId?.toString());
+  };
+
+  const cancelProjectHandler = (event) => {
+    event.stopPropagation();
+    console.log("cancel project");
+  };
+
   return (
     <Box
-      key={key}
+      onClick={projectClickHandler}
+      key={projectId}
       sx={{
         backgroundColor: "aliceblue",
         p: "1rem 0",
@@ -37,6 +55,7 @@ const ProjectCard = ({ key, Title, Description, freelancer, status, date }) => {
         borderRadius: "5px",
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
         position: "relative", // Add relative positioning to the container
+        "&:hover": { cursor: "pointer" },
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -54,7 +73,7 @@ const ProjectCard = ({ key, Title, Description, freelancer, status, date }) => {
           sx={{
             width: "8px",
             height: "8px",
-            backgroundColor: getStatusColor(),
+            backgroundColor: getStatusColor(status),
             position: "absolute",
             top: "20%",
             left: "-20%",
@@ -68,7 +87,9 @@ const ProjectCard = ({ key, Title, Description, freelancer, status, date }) => {
       status.toLowerCase() === "cancelled" ? (
         <Typography variant="p">{date}</Typography>
       ) : (
-        <Button variant="outlined">Request Cancel</Button>
+        <Button variant="outlined" onClick={cancelProjectHandler}>
+          Cancel
+        </Button>
       )}
     </Box>
   );

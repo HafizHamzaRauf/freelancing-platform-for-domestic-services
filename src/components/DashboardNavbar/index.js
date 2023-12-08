@@ -118,7 +118,7 @@ function DashboardNavbar() {
             >
               {pages.map((page, index) => {
                 return (
-                  <MenuItem onClick={handleCloseNavMenu}>
+                  <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                     <Link
                       to={`/${page?.name?.replace(/\s+/g, "").toLowerCase()}`}
                       style={dashboardStyles.mobileMenuItem}
@@ -138,6 +138,7 @@ function DashboardNavbar() {
           <Box sx={dashboardStyles.desktopDashboardLinks}>
             {pages.map((page) => (
               <Link
+                key={page.id}
                 onClick={handleCloseNavMenu}
                 to={`/${page?.name?.replace(/\s+/g, "").toLowerCase()}`}
                 style={dashboardStyles.desktopDashboardLinkItems}
@@ -173,13 +174,12 @@ function DashboardNavbar() {
             >
               {settings.map((setting) => {
                 return (
-                  <MenuItem onClick={handleCloseUserMenu}>
+                  <MenuItem key={setting.id} onClick={handleCloseUserMenu}>
                     <Link
                       to={`/${setting?.name
                         ?.replace(/\s+/g, "")
                         .toLowerCase()}`}
                       style={dashboardStyles.profileLinks}
-                      textAlign="center"
                     >
                       {setting.name}
                     </Link>

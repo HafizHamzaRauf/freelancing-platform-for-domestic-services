@@ -2,106 +2,32 @@ import { Box, Button, Pagination, Typography } from "@mui/material";
 import React, { useState } from "react";
 import FilterButton from "../FilterButton";
 import AddIcon from "@mui/icons-material/Add";
-import { buttonFilters } from "../../../Utils/constants";
+import { buttonFilters, dummyProjects } from "../../../Utils/constants";
 import FilterButtonGroup from "../FilterButtonGroup";
 import ProjectCard from "../ProjectCard";
 import MobileProjectCard from "../MobileProjectCard";
 
+const ManageProjectsStyling = {
+  ManageProjectBox: { m: { xs: "3rem 1.5rem", sm: "3rem" } },
+  topDescription: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    mb: 3,
+  },
+  addProjectButton: {
+    display: { xs: "block", sm: "none" },
+    borderRadius: "10px",
+  },
+  buttonFiltersBox: {
+    display: { xs: "none", sm: "flex" },
+    gap: 0.5,
+  },
+};
+
 const ManageProjectsMainStyles = {
   makeInlineBlock: { display: "inline-block" },
 };
-
-const dummyProjects = [
-  {
-    id: 1,
-    title: "Project 1",
-    description: "Description 1",
-    freelancer: "John Doe",
-    status: "Active",
-    date: "10/12/2021",
-  },
-  {
-    id: 2,
-    title: "Project 2",
-    description: "Description 2",
-    freelancer: "Jane Smith",
-    status: "Completed",
-    date: "12/05/2022",
-  },
-  {
-    id: 3,
-    title: "Project 3",
-    description: "Description 3",
-    freelancer: "Alice Johnson",
-    status: "Cancelled",
-    date: "05/20/2021",
-  },
-  {
-    id: 4,
-    title: "Project 4",
-    description: "Description 4",
-    freelancer: "Bob Williams",
-    status: "Active",
-    date: "08/15/2021",
-  },
-  {
-    id: 5,
-    title: "Project 5",
-    description: "Description 5",
-    freelancer: "Charlie Brown",
-    status: "Completed",
-    date: "04/02/2022",
-  },
-  {
-    id: 6,
-    title: "Project 6",
-    description: "Description 6",
-    freelancer: "David Wilson",
-    status: "Active",
-    date: "11/30/2022",
-  },
-  {
-    id: 7,
-    title: "Project 7",
-    description: "Description 7",
-    freelancer: "Eva Davis",
-    status: "Cancelled",
-    date: "07/10/2021",
-  },
-  {
-    id: 8,
-    title: "Project 8",
-    description: "Description 8",
-    freelancer: "Frank Moore",
-    status: "Active",
-    date: "09/25/2022",
-  },
-  {
-    id: 9,
-    title: "Project 9",
-    description: "Description 9",
-    freelancer: "Grace Taylor",
-    status: "Completed",
-    date: "02/18/2023",
-  },
-  {
-    id: 10,
-    title: "Project 10",
-    description: "Description 10",
-    freelancer: "Harry Anderson",
-    status: "Active",
-    date: "06/14/2021",
-  },
-  {
-    id: 11,
-    title: "Project 10",
-    description: "Description 10",
-    freelancer: "Harry Anderson",
-    status: "Active",
-    date: "06/14/2021",
-  },
-  // Add more projects as needed
-];
 
 const itemsPerPage = 8;
 const ManageProjectsMain = () => {
@@ -132,24 +58,15 @@ const ManageProjectsMain = () => {
     indexOfFirstItem,
     indexOfLastItem
   );
+
   return (
-    <Box sx={{ m: { xs: "3rem 1.5rem", sm: "3rem" } }}>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          mb: 3,
-        }}
-      >
+    <Box sx={ManageProjectsStyling.ManageProjectBox}>
+      <Box sx={ManageProjectsStyling.topDescription}>
         <Typography variant="h5">My Projects</Typography>
         <Button
           variant="contained"
           startIcon={<AddIcon></AddIcon>}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            borderRadius: "10px",
-          }}
+          sx={ManageProjectsStyling.addProjectButton}
         ></Button>
       </Box>
       <Box
@@ -174,12 +91,7 @@ const ManageProjectsMain = () => {
             onClick={handleFilterClick}
           />
 
-          <Box
-            sx={{
-              display: { xs: "none", sm: "flex" },
-              gap: 0.5,
-            }}
-          >
+          <Box sx={ManageProjectsStyling.buttonFiltersBox}>
             {buttonFilters.map((filter) => (
               <FilterButton
                 key={filter.value}
@@ -224,16 +136,19 @@ const ManageProjectsMain = () => {
           gap: "1rem",
         }}
       >
-        {currentProjects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            Title={project.title}
-            Description={project.description}
-            freelancer={project.freelancer}
-            status={project.status}
-            date={project.date}
-          />
-        ))}
+        {currentProjects.map((project) => {
+          return (
+            <ProjectCard
+              key={project.id}
+              projectId={project.id}
+              Title={project.title}
+              Description={project.description}
+              freelancer={project.freelancer}
+              status={project.status}
+              date={project.date}
+            />
+          );
+        })}
       </Box>
       <Box
         sx={{
@@ -247,6 +162,7 @@ const ManageProjectsMain = () => {
         {currentProjects.map((project) => (
           <MobileProjectCard
             key={project.id}
+            projectId={project.id}
             Title={project.title}
             Description={project.description}
           />
