@@ -6,6 +6,7 @@ import { buttonFilters, dummyProjects } from "../../../Utils/constants";
 import FilterButtonGroup from "../FilterButtonGroup";
 import ProjectCard from "../ProjectCard";
 import MobileProjectCard from "../MobileProjectCard";
+import { useNavigate } from "react-router-dom";
 
 const ManageProjectsStyling = {
   ManageProjectBox: { m: { xs: "3rem 1.5rem", sm: "3rem" } },
@@ -23,22 +24,54 @@ const ManageProjectsStyling = {
     display: { xs: "none", sm: "flex" },
     gap: 0.5,
   },
-};
-
-const ManageProjectsMainStyles = {
-  makeInlineBlock: { display: "inline-block" },
+  desktopFilterButtonBox: {
+    display: "inline-block",
+    display: "flex",
+    gap: "1rem",
+    alignItems: "center",
+  },
+  buttonFiltersOuterBox: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: { xs: "column", sm: "row" },
+  },
+  newProjectButton: {
+    justifyContent: "space-around",
+    display: { xs: "none", md: "flex" },
+    m: "2rem 0",
+  },
+  projectList: {
+    display: { xs: "none", md: "flex" },
+    flexDirection: "column",
+    gap: "1rem",
+  },
+  mobileProjectList: {
+    display: "flex",
+    flexDirection: "column",
+    gap: 1,
+    mt: 4,
+    display: { xs: "flex", md: "none" },
+  },
+  paginationBox: {
+    mt: 3,
+    display: "flex",
+    justifyContent: "center",
+  },
 };
 
 const itemsPerPage = 8;
 const ManageProjectsMain = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-
+  const navigate = useNavigate();
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
     setCurrentPage(1); // Reset to the first page when changing filters
   };
 
+  const newProjectButtonHandler = () => {
+    navigate("/postproject");
+  };
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
   };
@@ -64,26 +97,14 @@ const ManageProjectsMain = () => {
       <Box sx={ManageProjectsStyling.topDescription}>
         <Typography variant="h5">My Projects</Typography>
         <Button
+          onClick={newProjectButtonHandler}
           variant="contained"
           startIcon={<AddIcon></AddIcon>}
           sx={ManageProjectsStyling.addProjectButton}
         ></Button>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: { xs: "column", sm: "row" },
-        }}
-      >
-        <Box
-          sx={{
-            ...ManageProjectsMainStyles.makeInlineBlock,
-            display: "flex",
-            gap: "1rem",
-            alignItems: "center",
-          }}
-        >
+      <Box sx={ManageProjectsStyling.buttonFiltersOuterBox}>
+        <Box sx={ManageProjectsStyling.desktopFilterButtonBox}>
           <Typography variant="p">Filter By:</Typography>
           <FilterButtonGroup
             filters={buttonFilters}
@@ -105,6 +126,7 @@ const ManageProjectsMain = () => {
           </Box>
         </Box>
         <Button
+          onClick={newProjectButtonHandler}
           variant="contained"
           startIcon={<AddIcon></AddIcon>}
           sx={{
@@ -114,13 +136,7 @@ const ManageProjectsMain = () => {
           New Project
         </Button>
       </Box>
-      <Box
-        sx={{
-          justifyContent: "space-around",
-          display: { xs: "none", md: "flex" },
-          m: "2rem 0",
-        }}
-      >
+      <Box sx={ManageProjectsStyling.newProjectButton}>
         <Typography variant="h6" sx={{ pr: "4rem" }}>
           Project
         </Typography>
@@ -129,13 +145,7 @@ const ManageProjectsMain = () => {
 
         <Typography variant="h6">Completed Date</Typography>
       </Box>
-      <Box
-        sx={{
-          display: { xs: "none", md: "flex" },
-          flexDirection: "column",
-          gap: "1rem",
-        }}
-      >
+      <Box sx={ManageProjectsStyling.projectList}>
         {currentProjects.map((project) => {
           return (
             <ProjectCard
@@ -150,15 +160,7 @@ const ManageProjectsMain = () => {
           );
         })}
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 1,
-          mt: 4,
-          display: { xs: "flex", md: "none" },
-        }}
-      >
+      <Box sx={ManageProjectsStyling.mobileProjectList}>
         {currentProjects.map((project) => (
           <MobileProjectCard
             key={project.id}
@@ -168,13 +170,7 @@ const ManageProjectsMain = () => {
           />
         ))}
       </Box>
-      <Box
-        sx={{
-          mt: 3,
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <Box sx={ManageProjectsStyling.paginationBox}>
         <Pagination
           count={numberOfPages}
           page={currentPage}

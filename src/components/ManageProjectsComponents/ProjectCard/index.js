@@ -14,6 +14,31 @@ const getStatusColor = (status) => {
   }
 };
 
+const ProjectCardStyling = {
+  projectCardBox: {
+    backgroundColor: "aliceblue",
+    p: "1rem 0",
+    display: "flex",
+    justifyContent: "space-around",
+    borderRadius: "5px",
+    boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+    position: "relative", // Add relative positioning to the container
+    "&:hover": { cursor: "pointer" },
+  },
+  projectCardTop: { display: "flex", flexDirection: "column" },
+  statusBox: {
+    position: "relative",
+  },
+  status: {
+    width: "8px",
+    height: "8px",
+    position: "absolute",
+    top: "20%",
+    left: "-20%",
+    borderRadius: "50%",
+  },
+};
+
 const ProjectCard = ({
   projectId,
   Title,
@@ -47,37 +72,19 @@ const ProjectCard = ({
     <Box
       onClick={projectClickHandler}
       key={projectId}
-      sx={{
-        backgroundColor: "aliceblue",
-        p: "1rem 0",
-        display: "flex",
-        justifyContent: "space-around",
-        borderRadius: "5px",
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-        position: "relative", // Add relative positioning to the container
-        "&:hover": { cursor: "pointer" },
-      }}
+      sx={ProjectCardStyling.projectCardBox}
     >
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box sx={ProjectCardStyling.projectCardTop}>
         <Typography variant="p">{truncatedTitle}</Typography>
         <Typography variant="p">{truncatedDescription}</Typography>
       </Box>
       <Typography variant="p">{truncatedFreelancer}</Typography>
-      <Box
-        sx={{
-          position: "relative",
-        }}
-      >
+      <Box sx={ProjectCardStyling.statusBox}>
         {/* Show a small dot with different color based on the status */}
         <Box
           sx={{
-            width: "8px",
-            height: "8px",
+            ...ProjectCardStyling.status,
             backgroundColor: getStatusColor(status),
-            position: "absolute",
-            top: "20%",
-            left: "-20%",
-            borderRadius: "50%",
           }}
         />
 
