@@ -5,7 +5,8 @@ export const displaySettingsColumn = {
   flexDirection: "column",
 };
 /***********************       HOME PAGE CONTENT        *************/
-
+export const phoneNo = "+923244859907";
+export const email = "tasktown@gmail.com";
 export const AppName = "TaskTown";
 export const navItems = [
   { text: "Home", link: "/" },

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import DetailsTab from "../DetailsTab";
 import ProposalsTab from "../ProposalsTab";
 const ProjectStyling = {
-  projectBox: { m: { xs: "2rem", md: "4rem" } },
+  projectBox: { m: { xs: "2rem 1rem", md: "4rem" } },
 };
 const Project = () => {
   const { projectId } = useParams();

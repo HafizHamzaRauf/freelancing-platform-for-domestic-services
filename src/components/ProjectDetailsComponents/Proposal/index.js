@@ -54,7 +54,11 @@ const Proposal = ({
     <Box sx={ProposalStyling.ProposalBox}>
       <Box sx={ProposalStyling.proposalDetailBox}>
         <Box sx={ProposalStyling.imageBox}>
-          <img src={dummyImage} style={{ width: "100%" }} alt={name} />
+          <img
+            src={dummyImage}
+            style={{ width: "100%", borderRadius: "10px" }}
+            alt={name}
+          />
         </Box>
         <Box sx={ProposalStyling.RatingBox}>
           <Typography variant="h6">{name}</Typography>
