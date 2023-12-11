@@ -6,7 +6,7 @@ export const displaySettingsColumn = {
 };
 /***********************       HOME PAGE CONTENT        *************/
 export const phoneNo = "+923244859907";
-export const email = "tasktown@gmail.com";
+export const email = "homeswift@gmail.com";
 export const AppName = "HomeSwift";
 export const navItems = [
   { text: "Home", link: "/" },
