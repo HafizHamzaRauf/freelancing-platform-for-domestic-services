@@ -23,6 +23,7 @@ const Categories = () => {
         display: "flex",
         flexDirection: "column",
         gap: "2rem",
+        pb: "6rem",
       }}
     >
       <Typography variant="h3" sx={{ fontWeight: "bold" }}>
