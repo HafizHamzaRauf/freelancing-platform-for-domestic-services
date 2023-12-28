@@ -7,10 +7,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext, useState } from "react";
 import AppIcon from "../../UtilComponents/AppIcon";
 import { Link, useNavigate } from "react-router-dom";
 import theme from "../../../Utils/theme";
+import { UserTypeContext } from "../../../Store/UserTypeProvider";
 
 const SignupStyles = {
   CenterBox: {
@@ -51,10 +52,26 @@ const SignupStyles = {
 
 const Signup = () => {
   const navigate = useNavigate();
+  const userTypeState = useContext(UserTypeContext);
+
+  const [isFreelancer, setIsFreelancer] = useState(false);
+
   const onFormSubmit = (e) => {
     e.preventDefault();
-    navigate("/dashboard");
+
+    if (isFreelancer) {
+      navigate("/freelancer/dashboard");
+      userTypeState.setIsFreelancer(true);
+    } else {
+      userTypeState.setIsFreelancer(false);
+
+      navigate("/dashboard");
+    }
     console.log("inside the sign in form ");
+  };
+
+  const handleCheckboxChange = (event) => {
+    setIsFreelancer(event.target.checked);
   };
   return (
     <Box sx={SignupStyles.CenterBox}>
@@ -107,7 +124,12 @@ const Signup = () => {
         </Box>
         <FormGroup>
           <FormControlLabel
-            control={<Checkbox defaultChecked />}
+            control={
+              <Checkbox
+                defaultChecked={isFreelancer}
+                onChange={handleCheckboxChange}
+              />
+            }
             label="Register As Freelancer"
           />
         </FormGroup>

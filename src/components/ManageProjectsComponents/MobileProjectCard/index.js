@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserTypeContext } from "../../../Store/UserTypeProvider";
 const MobileProjectCardStyling = {
   MobileProjectCardBox: {
     display: "flex",
@@ -14,13 +15,19 @@ const MobileProjectCardStyling = {
 const MobileProjectCard = ({ projectId, Title, Description }) => {
   // Truncate the title to 12 characters
   const navigate = useNavigate();
+  const userTypeState = useContext(UserTypeContext);
+
   const truncatedTitle = Title.length > 12 ? `${Title.slice(0, 12)}...` : Title;
 
   const truncatedDescription =
     Description.length > 12 ? `${Description.slice(0, 12)}...` : Description;
 
   const handleViewClick = () => {
-    navigate(`/projects/${projectId}`);
+    if (userTypeState.isFreelancer) {
+      navigate("/freelancer/projects/" + projectId?.toString());
+    } else {
+      navigate("/projects/" + projectId?.toString());
+    }
   };
 
   return (

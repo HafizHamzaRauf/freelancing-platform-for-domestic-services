@@ -6,7 +6,7 @@ import {
   heroSectionHeading1,
   heroSectionHeading2,
 } from "../../Utils/constants";
-import HeroImage from "../../Assets/heroimage.png";
+import HeroImage from "../../Assets/heroimage1.png";
 import theme from "../../Utils/theme";
 import Reviews from "./Reviews";
 import { useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ const MainBodyStyles = {
   },
   HeroSectionImageBox: { display: { xs: "none", md: "block" } },
 
-  HeroSectionImage: { width: "25rem", height: "25rem", borderRadius: "2rem" },
+  HeroSectionImage: { width: "27rem", height: "27rem", borderRadius: ".6rem" },
 };
 
 // **********************       Main Body Component **************************//

@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserTypeContext } from "../../../Store/UserTypeProvider";
 const getStatusColor = (status) => {
   switch (status) {
     case "Completed":
@@ -48,6 +49,7 @@ const ProjectCard = ({
   date,
 }) => {
   const navigate = useNavigate();
+  const userTypeState = useContext(UserTypeContext);
   // Truncate the title to 16 characters
   const truncatedTitle = Title.length > 16 ? `${Title.slice(0, 16)}...` : Title;
 
@@ -60,7 +62,11 @@ const ProjectCard = ({
     freelancer.length > 10 ? `${freelancer.slice(0, 10)}...` : freelancer;
 
   const projectClickHandler = () => {
-    navigate("/projects/" + projectId?.toString());
+    if (userTypeState.isFreelancer) {
+      navigate("/freelancer/projects/" + projectId?.toString());
+    } else {
+      navigate("/projects/" + projectId?.toString());
+    }
   };
 
   const cancelProjectHandler = (event) => {

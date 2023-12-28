@@ -28,6 +28,11 @@ export const pages = [
   { id: 2, name: "Post Project" },
   { id: 3, name: "Manage Projects" },
 ];
+export const freelancerPages = [
+  { id: 1, name: "Dashboard" },
+  { id: 2, name: "View Bids" },
+  { id: 3, name: "Manage Projects" },
+];
 
 export const settings = [
   { id: 4, name: "Profile" },

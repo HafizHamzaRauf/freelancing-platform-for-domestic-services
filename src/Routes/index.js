@@ -10,9 +10,11 @@ import SignupPage from "../pages/Signup";
 import ForgetPassword from "../pages/ForgetPassword";
 import Dashboard from "../pages/Dashboard";
 import PostProject from "../pages/PostProject";
-import Signup from "../components/Forms/SignUp";
 import ManageProjects from "../pages/ManageProjects";
 import ProjectDetails from "../pages/ProjectDetails";
+import FreelancerDashboard from "../pages/FreelancerPages/FreelancerDashboard";
+import FreelancerManageProjects from "../pages/FreelancerPages/FreelancerManageProjects";
+import FreelancerProjectDetails from "../pages/FreelancerPages/FreelancerProjectDetails";
 const AppRouter = () => {
   return (
     <Router>
@@ -39,6 +41,20 @@ const AppRouter = () => {
         <Route
           path="/projects/:projectId"
           element={<ProjectDetails></ProjectDetails>}
+        />
+
+        {/* *****************************     Freelancer  ROUTES      ***************************** */}
+        <Route
+          path="/freelancer/dashboard"
+          element={<FreelancerDashboard></FreelancerDashboard>}
+        />
+        <Route
+          path="/freelancer/manageProjects"
+          element={<FreelancerManageProjects></FreelancerManageProjects>}
+        />
+        <Route
+          path="/freelancer/projects/:projectId"
+          element={<FreelancerProjectDetails></FreelancerProjectDetails>}
         />
         {/* *****************************     ERROR  ROUTES      ***************************** */}
 

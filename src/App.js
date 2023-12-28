@@ -1,10 +1,13 @@
 import AppRouter from "./Routes";
 import "./App.css";
+import { UserTypeProvider } from "./Store/UserTypeProvider";
 
 function App() {
   return (
     <>
-      <AppRouter></AppRouter>
+      <UserTypeProvider>
+        <AppRouter></AppRouter>
+      </UserTypeProvider>
     </>
   );
 }

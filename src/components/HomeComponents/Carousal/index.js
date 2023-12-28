@@ -2,8 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Typography } from "@mui/material";
-import theme from "../../../Utils/theme";
+import { Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@emotion/react";
 const Carousal = () => {
   const carouselData = [
     {
@@ -33,7 +33,9 @@ const Carousal = () => {
     arrows: false,
     autoplay: true, // Enable autoplay
   };
-
+  const theme = useTheme();
+  const isSmOrBelow = useMediaQuery((theme) => theme.breakpoints.down("sm"));
+  console.log(isSmOrBelow);
   return (
     <div style={{ backgroundColor: "aliceblue" }}>
       <Slider {...settings}>
@@ -44,7 +46,7 @@ const Carousal = () => {
                 backgroundImage: `url(${item.image})`,
                 backgroundSize: "cover",
                 display: "flex",
-                height: "600px",
+                height: isSmOrBelow ? "400px" : "600px",
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
