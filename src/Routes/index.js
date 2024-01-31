@@ -15,6 +15,8 @@ import ProjectDetails from "../pages/ProjectDetails";
 import FreelancerDashboard from "../pages/FreelancerPages/FreelancerDashboard";
 import FreelancerManageProjects from "../pages/FreelancerPages/FreelancerManageProjects";
 import FreelancerProjectDetails from "../pages/FreelancerPages/FreelancerProjectDetails";
+import ViewBids from "../components/FreelancerComponents/ViewBids";
+import FreelancerViewBids from "../pages/FreelancerPages/FreelancerViewBids";
 const AppRouter = () => {
   return (
     <Router>
@@ -55,6 +57,11 @@ const AppRouter = () => {
         <Route
           path="/freelancer/projects/:projectId"
           element={<FreelancerProjectDetails></FreelancerProjectDetails>}
+        />
+
+        <Route
+          path="/freelancer/viewbids"
+          element={<FreelancerViewBids></FreelancerViewBids>}
         />
         {/* *****************************     ERROR  ROUTES      ***************************** */}
 

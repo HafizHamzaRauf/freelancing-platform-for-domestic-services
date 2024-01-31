@@ -148,3 +148,38 @@ export const dummyProjects = [
 export const currency = "$";
 export const scamWarningMessage =
   "If you are being asked to pay a security deposit, or if you are being asked to chat on Telegram, Whatsapp, or another messaging platform, it is likely a scam, Report these projects or contact Support for assistance";
+
+
+
+export   const bids = [
+    {
+      id: "1",
+      projectTitle: "project1",
+      date: new Date().toLocaleDateString(),
+      awardedFreelancer: "Hamza Rauf",
+    },
+    {
+      id: "2",
+      projectTitle: "project2",
+      date: new Date().toLocaleDateString(),
+      awardedFreelancer: "John Doe",
+    },
+    {
+      id: "3",
+      projectTitle: "project3",
+      date: new Date().toLocaleDateString(),
+      awardedFreelancer: "Alice Smith",
+    },
+    {
+      id: "4",
+      projectTitle: "project4",
+      date: new Date().toLocaleDateString(),
+      awardedFreelancer: "Bob Johnson",
+    },
+    {
+      id: "5",
+      projectTitle: "project5",
+      date: new Date().toLocaleDateString(),
+      awardedFreelancer: "Emma Wilson",
+    },
+  ];
