@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import DetailsTab from "../DetailsTab";
 import ProposalsTab from "../ProposalsTab";
+import ChatTab from "../ChatTab";
 const ProjectStyling = {
   projectBox: { m: { xs: "2rem 1rem", md: "4rem" } },
 };
@@ -25,6 +26,7 @@ const Project = () => {
         >
           <Tab label="Details" />
           <Tab label="Proposals" />
+          <Tab label="Chat" />
         </Tabs>
 
         {value === 0 && (
@@ -38,6 +40,7 @@ const Project = () => {
         )}
 
         {value === 1 && <ProposalsTab></ProposalsTab>}
+        {value === 2 && <ChatTab></ChatTab>}
       </Box>
     </Box>
   );
